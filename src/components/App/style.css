@@ -1,0 +1,11 @@
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.App-content {
+  flex: 1;
+  background: #ECF0F1;
+}

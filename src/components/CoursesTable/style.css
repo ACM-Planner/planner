@@ -1,0 +1,7 @@
+.CoursesTable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: teal;
+  min-height: 300px;
+}
