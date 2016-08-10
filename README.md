@@ -43,4 +43,4 @@ PORT=5000 npm start
 #### Redux tutorial
 
 * https://egghead.io/courses/getting-started-with-redux
-https://egghead.io/courses/building-react-applications-with-idiomatic-redux
+* https://egghead.io/courses/building-react-applications-with-idiomatic-redux
