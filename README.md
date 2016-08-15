@@ -36,6 +36,64 @@ To use another port instead of the default:
 PORT=5000 npm start
 ```
 
+### Create a new Component
+
+We are using **ES6 Components**, this means we create *ES6 classes*. To start:
+
+```sh
+# Change 'NewComponent' to the component name
+mkdir src/components/NewComponent
+touch src/components/NewComponent/index.js
+touch src/components/NewComponent/style.css
+```
+
+#### Dummy or presentation component
+
+A dummy component is not aware of the global state of Redux. This kind of component are preferred.
+
+```js
+// src/components/NewComponent/index.js
+import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
+
+import './style.css';
+
+export default class NewComponent extends Component {
+
+  // Props must not be modified
+  static propTypes = {
+    name: PropTypes.string,
+  }
+
+  static defaultProps = {
+    name: 'Patricio',
+  }
+
+  // State must be changed using this.setState
+  state = {
+    message: '',
+  }
+
+  onChange = (e) => {
+    this.setState({ message: e.target.value });
+  }
+
+  render() {
+    const { name } = this.props;
+    const { message } = this.state;
+
+    return (
+      <div className={classnames('NewComponent', this.props.className)} style={this.props.style}>
+        <h1 className="NewComponent-title">
+          Hi {name}!
+        </h1>
+        <input type="text" value={message} onChange={this.onChange}>
+      </div>
+    );
+  }
+}
+```
+
 ### Need help with [React](https://facebook.github.io/react/) or [Redux](http://redux.js.org/index.html)?
 
 #### React.js tutorial

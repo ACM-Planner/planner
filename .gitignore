@@ -10,6 +10,8 @@ build
 .DS_Store
 npm-debug.log
 
+# readme
+src/components/NewComponent
 
 #### joe made this: http://goel.io/joe
 
@@ -98,4 +100,3 @@ Temporary Items
 
 # Linux trash folder which might appear on any partition or disk
 .Trash-*
-
