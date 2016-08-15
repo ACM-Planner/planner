@@ -36,7 +36,7 @@ To use another port instead of the default:
 PORT=5000 npm start
 ```
 
-### Need help with React or Redux?
+### Need help with [React](https://facebook.github.io/react/) or [Redux](http://redux.js.org/index.html)?
 
 #### React.js tutorial
 
