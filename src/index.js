@@ -1,7 +1,7 @@
 // React imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 
 // Redux imports
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -12,9 +12,10 @@ import createLogger from 'redux-logger';
 
 // Other imports
 import uuid from 'node-uuid';
+import identity from 'lodash/identity';
 
 // Local imports
-import App from './components/App';
+import Routes from './routes';
 import reducers from './reducers';
 import './index.css';
 
@@ -27,7 +28,7 @@ const INITIAL_STATE = {
 };
 
 // See: https://github.com/zalmoxisus/redux-devtools-extension
-const devTools = window.devToolsExtension ? window.devToolsExtension() : f => f;
+const devTools = window.devToolsExtension ? window.devToolsExtension() : identity;
 const logger = createLogger();
 const enhancer = compose(applyMiddleware(thunk, logger), devTools);
 
@@ -39,9 +40,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={App} />
-    </Router>
+    <Routes history={history} />
   </Provider>,
   document.getElementById('root')
 );
