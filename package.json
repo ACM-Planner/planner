@@ -15,7 +15,6 @@
     "mocha": "^3.0.2",
     "mz": "^2.4.0",
     "react-scripts": "0.2.1",
-    "serve-favicon": "^2.3.0",
     "supertest": "^2.0.0"
   },
   "dependencies": {
@@ -33,6 +32,15 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ACM-Planner/planner.git"
+  },
+  "author": "Patricio López <patricio@lopezjuri.com> (https://lopezjuri.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ACM-Planner/planner/issues"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js",

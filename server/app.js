@@ -1,7 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
-const favicon = require('serve-favicon')
 const path = require('path')
 
 const app = express()
@@ -10,9 +9,6 @@ const app = express()
 app.use(helmet())
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms')) // eslint-disable-line
-
-// Serve favicon
-app.use(favicon(path.resolve(__dirname, '..', 'build', 'favicon.ico')));
 
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'build')))
