@@ -1,6 +1,6 @@
 # Planner Web Client
 
-![david](https://david-dm.org/ACM-Planner/planner.svg)
+[![Build Status](https://travis-ci.org/ACM-Planner/planner.svg?branch=master)](https://travis-ci.org/ACM-Planner/planner) ![david](https://david-dm.org/ACM-Planner/planner.svg)
 
 Single Page Application written with [React.js](https://facebook.github.io/react/).
 
