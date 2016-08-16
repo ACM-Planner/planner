@@ -1,6 +1,6 @@
 # Planner Web Client
 
-[![Build Status](https://travis-ci.org/ACM-Planner/planner.svg?branch=master)](https://travis-ci.org/ACM-Planner/planner) ![david](https://david-dm.org/ACM-Planner/planner.svg) [![Docker Pulls](https://img.shields.io/docker/pulls/acmplanner/planner.svg?maxAge=2592000)](https://hub.docker.com/r/acmplanner/planner/)
+[![Build Status](https://travis-ci.org/ACM-Planner/planner.svg?branch=master)](https://travis-ci.org/ACM-Planner/planner) [![david](https://david-dm.org/ACM-Planner/planner.svg)](https://david-dm.org/ACM-Planner/planner) [![Docker Pulls](https://img.shields.io/docker/pulls/acmplanner/planner.svg?maxAge=2592000)](https://hub.docker.com/r/acmplanner/planner/)
 
 Single Page Application written with [React.js](https://facebook.github.io/react/).
 
