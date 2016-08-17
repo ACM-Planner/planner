@@ -94,6 +94,14 @@ export default class NewComponent extends Component {
 }
 ```
 
+### Testing
+
+Currently we are only testing the Express.js server.
+
+```sh
+npm test
+```
+
 ### Need help with [React](https://facebook.github.io/react/) or [Redux](http://redux.js.org/index.html)?
 
 #### React.js tutorial
