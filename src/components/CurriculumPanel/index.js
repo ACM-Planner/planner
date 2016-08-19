@@ -25,12 +25,15 @@ export class CurriculumPanel extends Component {
   render() {
     return (
       <div className={classnames('CurriculumPanel', this.props.className)} style={this.props.style}>
+        <div className="CurriculumPanel-text">
+          Malla curricular
+        </div>
         <Collapse isOpened={!this.state.collapsed}>
           <div className="CurriculumPanel-content">
             <Curriculum />
           </div>
         </Collapse>
-        <div className="CurriculumPanel-button CurriculumPanel-text" onClick={this.toggleCollapse}>
+        <div className="CurriculumPanel-button" onClick={this.toggleCollapse}>
           <Icon size="2x" name={`angle-double-${this.state.collapsed ? 'down' : 'up'}`} />
         </div>
       </div>
