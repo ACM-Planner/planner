@@ -127,17 +127,17 @@ export class Collaborators extends Component {
   render() {
     return (
       <div className={classnames('Collaborators', this.props.className)} style={this.props.style}>
-        <h1 className="Collaborators-title">
+        <div className="Collaborators-title">
           Colaboradores
-        </h1>
+        </div>
         <div className="Collaborators-content">
           <div>
             <table>
               {this.state.collaborators.map((collaborator) => (
                 <tr>
-                  <td>{collaborator.name}</td>
-                  <td>{collaborator.url ? (<a href={collaborator.url}><Icon size="1x" name="globe" /></a>) : "" }</td>
-                  <td>{collaborator.github ? (<a href={`http://github.com/${collaborator.github}`}><Icon size="1x" name="github" /></a>) : "" }</td>
+                  <td>{collaborator.url ? (<a className="Collaborator-url" href={collaborator.url}><Icon size="1x" name="globe" /></a>) : "" }</td>
+                  <td>{collaborator.github ? (<a className="Collaborator-url" href={`http://github.com/${collaborator.github}`}><Icon size="1x" name="github" /></a>) : "" }</td>
+                  <td className="Collaborator-name">{collaborator.name}</td>
                 </tr>
               ))}
             </table>
