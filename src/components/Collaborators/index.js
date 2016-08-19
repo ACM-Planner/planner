@@ -87,7 +87,7 @@ export class Collaborators extends Component {
           url: "",
         },
         {
-          name: "Miguel Fadiç",
+          name: "Miguel Fadić",
           github: "mofadic",
           url: "",
         },
