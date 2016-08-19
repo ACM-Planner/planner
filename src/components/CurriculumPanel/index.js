@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import Collapse from 'react-collapse';
+import {Icon} from 'react-fa';
 
 import Curriculum from '../Curriculum/';
 
@@ -30,7 +31,7 @@ export class CurriculumPanel extends Component {
           </div>
         </Collapse>
         <div className="CurriculumPanel-button CurriculumPanel-text" onClick={this.toggleCollapse}>
-          Button
+          <Icon size="2x" name={`angle-double-${this.state.collapsed ? 'down' : 'up'}`} />
         </div>
       </div>
     );
