@@ -5,27 +5,13 @@ import classnames from 'classnames';
 import { connect } from 'react-redux';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
   from 'material-ui/Table';
+import renderIf from 'render-if';
+import {Icon} from 'react-fa';
 
 import './style.css';
 
 // Fake data
 const tableData = [
-  {
-    nrc: 1,
-    sigla: 'iic2523',
-    retiro: 'si',
-    ingles: 'no',
-    aprobacionEspecial: 'si',
-    categoria: 'nose',
-    nombre: 'bla bla',
-    profesor: 'fdsfdsa',
-    campus: 'fdsa',
-    creditos: 10,
-    vacantesTotal: 1,
-    vacantesDisponibles: 1,
-    vacantesReservadas: 1,
-    horario: 'fdsafsd'
-  },
   {
     nrc: 2,
     sigla: 'iic2523',
@@ -44,7 +30,7 @@ const tableData = [
   },
   {
     nrc: 3,
-    sigla: 'iic2523',
+    sigla: 'iic1111',
     retiro: 'si',
     ingles: 'no',
     aprobacionEspecial: 'si',
@@ -59,8 +45,24 @@ const tableData = [
     horario: 'fdsafsd'
   },
   {
-    nrc: 4,
-    sigla: 'iic2523',
+    nrc: 3,
+    sigla: 'iic6000',
+    retiro: 'si',
+    ingles: 'no',
+    aprobacionEspecial: 'si',
+    categoria: 'nose',
+    nombre: 'bla bla',
+    profesor: 'fdsfdsa',
+    campus: 'fdsa',
+    creditos: 10,
+    vacantesTotal: 1,
+    vacantesDisponibles: 1,
+    vacantesReservadas: 1,
+    horario: 'fdsafsd'
+  },
+  {
+    nrc: 1,
+    sigla: 'iic0101',
     retiro: 'si',
     ingles: 'no',
     aprobacionEspecial: 'si',
@@ -88,7 +90,11 @@ export class CoursesTable extends Component {
 
 // Este es el style para el header, hay que hacer uno para el body sin la propiedad 'cursor'
 const styles = {
-  row: {
+  bodyRow: {
+    padding: 0,
+    textAlign: 'center'
+  },
+  headerRow: {
     padding: 0,
     textAlign: 'center',
     cursor: 'pointer'
@@ -113,6 +119,24 @@ const tableHeaders = [
   'Horario'
 ]
 
+// Map every column number to a response key
+const columnKeyMapping = [
+  'nrc',
+  'sigla',
+  'retiro',
+  'ingles',
+  'aprobacionEspecial',
+  'categoria',
+  'nombre',
+  'profesor',
+  'campus',
+  'creditos',
+  'vacantesTotal',
+  'vacantesDisponibles',
+  'vacantesReservadas',
+  'horario'
+];
+
 class CourseTable extends React.Component {
 
   constructor(props) {
@@ -129,19 +153,41 @@ class CourseTable extends React.Component {
       deselectOnClickaway: true,
       showCheckboxes: false,
       height: '300px',
-      tableData: tableData
+      tableData: tableData,
+      order: [null, null] // [columnId, ascending/descending(0/1)]
     };
   }
 
-  headerClick = (i) => {
-    // Esta función debería ordenar el objeto tableData
-    // Tiene que haber una forma de saber a que 'i' correponde cada columna
-    console.log('headerClick llamada');
+  // Order data by clicked header cell
+  headerClick = (proxyObj, rowNumber, columnId) => {
     this.setState({
       tableData: tableData.sort((a, b) => {
-        return a.nrc > b.nrc
+        if (this.state.order[0] === columnId && this.state.order[1] === 0) {
+          return a[columnKeyMapping[columnId-1]] < b[columnKeyMapping[columnId-1]];
+        }
+        else {
+          return a[columnKeyMapping[columnId-1]] > b[columnKeyMapping[columnId-1]];
+        }
       })
     });
+
+    if (this.state.order[0] === columnId) {
+      if (this.state.order[1] === 0) {
+        this.setState({
+          order: [columnId, 1]
+        });
+      }
+      else {
+        this.setState({
+          order: [columnId, 0]
+        });
+      }
+    }
+    else {
+      this.setState({
+        order: [columnId, 0]
+      });
+    }
   }
 
   render() {
@@ -164,11 +210,17 @@ class CourseTable extends React.Component {
                 Super Header
               </TableHeaderColumn>
             </TableRow>
-            <TableRow>
+            <TableRow onCellClick={this.headerClick}>
               {tableHeaders.map((name, i) => (
-                // Problema con evento onClick, no se está llamando
-                // Issue: https://github.com/callemall/material-ui/issues/2011
-                <TableHeaderColumn key={i} style={styles.row} onClick={() => this.headerClick(i)}>{name}</TableHeaderColumn>
+                <TableHeaderColumn key={i} id='a' style={styles.headerRow} onClick={() => this.headerClick(i)}>
+                  {name}
+                  {renderIf(this.state.order[0] === i+1 && this.state.order[1] === 0)(
+                    <Icon name="arrow-up" />
+                  )}
+                  {renderIf(this.state.order[0] === i+1 && this.state.order[1] === 1)(
+                    <Icon name="arrow-down" />
+                  )}
+                </TableHeaderColumn>
               ))}
             </TableRow>
           </TableHeader>
@@ -180,22 +232,22 @@ class CourseTable extends React.Component {
           >
             {this.state.tableData.map( (row, index) => (
               <TableRow key={index} selected={row.selected}>
-                <TableRowColumn style={styles.row}>{row.nrc}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.sigla}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.retiro}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.ingles}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.seccion}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.aprobacionEspecial}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.categoria}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.nombre}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.profesor}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.campus}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.creditos}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.vacantesTotal}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.vacantesDisponibles}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.vacantesReservadas}</TableRowColumn>
-                <TableRowColumn style={styles.row}>{row.horario}</TableRowColumn>
-                <TableRowColumn style={styles.row}></TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.nrc}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.sigla}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.retiro}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.ingles}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.seccion}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.aprobacionEspecial}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.categoria}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.nombre}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.profesor}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.campus}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.creditos}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.vacantesTotal}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.vacantesDisponibles}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.vacantesReservadas}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}>{row.horario}</TableRowColumn>
+                <TableRowColumn style={styles.bodyRow}></TableRowColumn>
               </TableRow>
               ))}
           </TableBody>
