@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FlatButton from 'material-ui/FlatButton';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 
@@ -15,7 +16,7 @@ export class CurriculumPanel extends Component {
           <Curriculum />
         </div>
         <div className="CurriculumPanel-button CurriculumPanel-text">
-          Button
+          <FlatButton label="Primary" primary={true} />
         </div>
       </div>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 
@@ -9,7 +10,7 @@ import Footer from '../Footer/';
 
 import './style.css';
 
-export class App extends Component {
+export class Main extends Component {
   render() {
     return (
       <div className={classnames('App', this.props.className)} style={this.props.style}>
@@ -23,6 +24,12 @@ export class App extends Component {
     );
   }
 }
+
+const App = (props) => (
+  <MuiThemeProvider>
+    <Main {...props} />
+  </MuiThemeProvider>
+);
 
 export const mapStateToProps = (state, ownProps) => {
   return state;
