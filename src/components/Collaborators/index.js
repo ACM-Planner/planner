@@ -68,7 +68,7 @@ export class Collaborators extends Component {
         },
         {
           name: "Jaime Castro",
-          github: "jcastro1",
+          github: "jecastro1",
           url: "",
         },
         {
