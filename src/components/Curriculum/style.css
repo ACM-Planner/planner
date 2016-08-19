@@ -1,7 +1,7 @@
 .Curriculum {
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: red;
-  min-height: 200px;
+  /*background-color: red;*/
 }

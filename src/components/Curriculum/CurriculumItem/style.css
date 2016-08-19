@@ -1,0 +1,7 @@
+.CurriculumItem {
+  width: 170px;
+  height: 80px;
+  border-width: 10px;
+  border-color: black;
+  background-color: red;
+}

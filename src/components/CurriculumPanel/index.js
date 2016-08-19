@@ -11,12 +11,11 @@ export class CurriculumPanel extends Component {
   render() {
     return (
       <div className={classnames('CurriculumPanel', this.props.className)} style={this.props.style}>
-        <code className="CurriculumPanel-text">src/components/CurriculumPanel/index.js</code>
         <div className="CurriculumPanel-content">
           <Curriculum />
         </div>
         <div className="CurriculumPanel-button CurriculumPanel-text">
-          <FlatButton label="Primary" primary={true} />
+          <FlatButton label="^" primary={true} />
         </div>
       </div>
     );
