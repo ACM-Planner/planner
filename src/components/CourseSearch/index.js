@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import AutoComplete from 'material-ui/AutoComplete';
 import RaisedButton from 'material-ui/RaisedButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
+import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import ScheduleTable from './ScheduleTable'
 
@@ -17,6 +18,7 @@ export class CourseSearch extends Component {
     this.state = {
       autocompleteSource: [],
       semester: 20162,
+      campus: 1,
     };
   }
 
@@ -31,8 +33,11 @@ export class CourseSearch extends Component {
 
   handleSemesterChange = (event, index, value) => this.setState({ semester: value });
 
+  handleCampusChange = (event, index, value) => this.setState({ campus: value });
+
   render() {
     return (
+
       <div className={classnames('CourseSearch', this.props.className)} style={this.props.style}>
 
         <DropDownMenu value={this.state.semester} onChange={this.handleSemesterChange}>
@@ -48,6 +53,17 @@ export class CourseSearch extends Component {
           onUpdateInput={this.handleUpdateInput}
           fullWidth={true}
           />
+
+        <div>
+          <SelectField value={this.state.campus} onChange={this.handleCampusChange}>
+            <MenuItem value={1} primaryText="San Joaquin" />
+            <MenuItem value={2} primaryText="Campus Oriente" />
+            <MenuItem value={3} primaryText="Casa Central" />
+            <MenuItem value={5} primaryText="Lo Contador" />
+            <MenuItem value={4} primaryText="Villarrica" />
+          </SelectField>
+        </div>
+
 
         <div className={classnames('ScheduleFilterContainer', this.props.className)} style={this.props.style}>
           <ScheduleTable />
