@@ -42,7 +42,7 @@ export class Collaborators extends Component {
           url: "",
         },
         {
-          name: "",
+          name: "Francisco Maturana",
           github: "Faturan",
           url: "",
         },
@@ -82,12 +82,12 @@ export class Collaborators extends Component {
           url: "",
         },
         {
-          name: "María Fernanda",
+          name: "M. Fernanda Sepúlveda",
           github: "mf222",
           url: "",
         },
         {
-          name: "",
+          name: "Miguel Fadiç",
           github: "mofadic",
           url: "",
         },
@@ -111,8 +111,13 @@ export class Collaborators extends Component {
           github: "tamycova",
         },
         {
-          name: "Tomas",
+          name: "Tomas Gaete",
           github: "tegaete",
+          url: "",
+        },
+        {
+          name: "Diego Casas",
+          github: "dacasas",
           url: "",
         },
       ]
