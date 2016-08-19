@@ -1,12 +1,19 @@
 .Schedulers {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: orange;
+  background-color: white;
+}
+
+.Schedulers-table {
+  padding: 1em;
+  margin: 0 auto;
 }
 
 .SchedulersAddButton{
-      position: absolute;
+      position:absolute;
       right: 40px;
-      display: inline-block;
+      display: block;
+      z-index: 99;
 }
