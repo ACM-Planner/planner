@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+// import {
+//   Table,
+//   TableBody,
+//   TableHeader,
+//   TableHeaderColumn,
+//   TableRow,
+//   TableRowColumn
+// } from 'material-ui/Table';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 
 import './style.css';
 import CurriculumItem from './CurriculumItem/';
+
+const course = {
+  name: 'Tópicos avanzados de bases de datos',
+  sigla: 'IIC2412',
+  color: '#E67E22',
+};
 
 export class Curriculum extends Component {
   render() {
@@ -23,7 +36,7 @@ export class Curriculum extends Component {
                 1º
               </td>
               <td>
-                <CurriculumItem />
+                <CurriculumItem {...course} />
               </td>
               <td>
                 <CurriculumItem />

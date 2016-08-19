@@ -3,5 +3,66 @@
   height: 80px;
   border-width: 10px;
   border-color: black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.CurriculumItem-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.CurriculumItem-left {
+  display: flex;
+  width: 15px;
+}
+
+.CurriculumItem-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.CurriculumItem-icon {
+  position: absolute;
+  display: flex;
+  align-self: flex-end;
+}
+
+.CurriculumItem-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 5px;
+  padding-top: 5px;
+}
+
+.CurriculumItem-req {
+  display: flex;
+  align-items: center;
+  /*flex-direction: column;*/
+  height: 25px;
+  padding-left: 5px;
+}
+
+.CurriculumItem-text {
+  font-size: 10px;
+  padding-bottom: 2px;
+}
+
+.CurriculumItem-header {
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.CurriculumItem-req-circle {
+  height: 10px;
+  width: 10px;
+  margin-right: 5px;
+  border-radius: 5px;
   background-color: red;
 }
