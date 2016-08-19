@@ -1,7 +1,14 @@
 .Footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: wheat;
+  display: block;
+  /*justify-content: center;*/
+  /*align-items: center;;*/
+  background-color: grey;
   min-height: 50px;
+  padding: 15px 0 5px 0;
+}
+
+.Footer-box {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
 }
