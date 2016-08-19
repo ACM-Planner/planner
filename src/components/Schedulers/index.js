@@ -101,23 +101,42 @@ eraseTab(e){
             <div >
                         <table>
                                <tr>
-                                       <th>block</th>
-                                       <th> block</th>
-                                       <th> block</th>
+                                       <td>block</td>
+                                       <td>block</td>
+                                       <td>block</td>
+                                       <td>block</td>
+                                       <td>block</td>
                                 </tr>
                                <tr>
                                        <td>block</td>
                                        <td> block</td>
                                        <td>block</td>
+                                       <td>block</td>
+                                       <td>block</td>
                                </tr>
                                <tr>
                                        <td> block</td>
                                        <td>block</td>
                                        <td>block</td>
+                                       <td>block</td>
+                                       <td>block</td>
+                               </tr>
+
+                               <tr>
+                                      <td> block</td>
+                                      <td>block</td>
+                                      <td>block</td>
+                                      <td>block</td>
+                                      <td>block</td>
+                               </tr>
+                               <tr>
+                                      <td> block</td>
+                                      <td>block</td>
+                                      <td>block</td>
+                                      <td>block</td>
+                                      <td>block</td>
                                </tr>
                       </table>
-
-
 
             </div>
 
