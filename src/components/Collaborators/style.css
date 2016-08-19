@@ -1,7 +1,18 @@
 .Collaborators {
   display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: blue;
 }
 
 .Collaborators-title {
+    background-color: red;
+    text-align: center;
+}
 
+.Collaborators-content {
+  flex: 1;
+  background: pink;
+  flex-direction: column;
 }
