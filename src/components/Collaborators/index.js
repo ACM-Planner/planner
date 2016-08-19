@@ -18,7 +18,7 @@ export class Collaborators extends Component {
         },
         {
           name: "Nicolás Gebauer",
-          github: "",
+          github: "negebauer",
           url: "http://negebauer.github.io/",
         },
         {
@@ -131,13 +131,17 @@ export class Collaborators extends Component {
           Colaboradores
         </h1>
         <div className="Collaborators-content">
-        {this.state.collaborators.map((collaborator) => (
           <div>
-            {collaborator.name}
-            {collaborator.url ? (<a href={collaborator.url}><Icon size="1x" name="globe" /></a>) : "" }
-            {collaborator.github ? (<a href={`http://github.com/${collaborator.github}`}><Icon size="1x" name="github" /></a>) : "" }
+            <table>
+              {this.state.collaborators.map((collaborator) => (
+                <tr>
+                  <td>{collaborator.name}</td>
+                  <td>{collaborator.url ? (<a href={collaborator.url}><Icon size="1x" name="globe" /></a>) : "" }</td>
+                  <td>{collaborator.github ? (<a href={`http://github.com/${collaborator.github}`}><Icon size="1x" name="github" /></a>) : "" }</td>
+                </tr>
+              ))}
+            </table>
           </div>
-        ))}
         </div>
         <Footer />
       </div>

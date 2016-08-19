@@ -12,7 +12,16 @@
 }
 
 .Collaborators-content {
+  display: flex;
   flex: 1;
   background: pink;
-  flex-direction: column;
+  justify-content: center;
+}
+
+.Collaborators-name {
+
+}
+
+.Collaborators-urls {
+
 }
