@@ -1,6 +1,12 @@
 .Schedulers {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: orange;
+  background-color: white;
+}
+
+.Schedulers-table {
+  padding: 1em;
+  margin: 0 auto;
 }

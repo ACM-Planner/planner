@@ -40,7 +40,7 @@ class ScheduleTabs extends Component {
     super(props);
     this.state = {
       slideIndex: 0,
-      tabs: ['oneTabExamp'],
+      tabs: ['Horario 1', 'Horario 2'],
     };
   }
 
@@ -58,8 +58,8 @@ class ScheduleTabs extends Component {
     })
   }
 
-  eraseTab(e) {
-    //TODO: erase a tab
+  deleteTab(e) {
+    //TODO: delete a tab
   }
 
   render() {
@@ -86,26 +86,41 @@ class ScheduleTabs extends Component {
 class ScheduleGrid extends Component {
 
   render() {
-    const rows = Array(8).fill(Array(6).fill(null).map(() => (<ScheduleNode />)))
-
     return (
-    <table>
+      <table className={classnames('Schedulers-table',this.props.className)} style={this.props.style}>
       <thead>
 
       </thead>
       <tbody>
-        { rows.map(x => (<tr>{ x }</tr>)) }
+        { Array(8).fill(null).map((_, module) => <ScheduleRow module={module} />) }
       </tbody>
     </table>)
+  }
+}
+
+class ScheduleRow extends Component {
+
+  render() {
+    const makeNode = day => <ScheduleNode {...{
+        day: day + 1,
+        module: this.props.module + 1,
+        schedule: []
+      }}/>
+
+    return (
+      <tr>
+        { Array(6).fill(null).map(makeNode) }
+      </tr>
+    )
   }
 }
 
 
 class ScheduleNode extends Component {
 
-  render(){
+  render() {
     return (
-    <td>
+      <td>
       Block
     </td>)
   }
