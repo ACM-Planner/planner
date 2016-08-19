@@ -167,6 +167,7 @@ class CourseTable extends React.Component {
             <TableRow>
               {tableHeaders.map((name, i) => (
                 // Problema con evento onClick, no se está llamando
+                // Issue: https://github.com/callemall/material-ui/issues/2011
                 <TableHeaderColumn key={i} style={styles.row} onClick={() => this.headerClick(i)}>{name}</TableHeaderColumn>
               ))}
             </TableRow>
