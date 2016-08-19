@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import Footer from '../Footer/';
+import {Icon} from 'react-fa';
 
 import './style.css';
 
@@ -14,10 +15,10 @@ export class Collaborators extends Component {
           name: "CIWS",
           github: "",
           url: "http://ciws.cl",
-        }
+        },
         {
           name: "Nicolás Gebauer",
-          github: "negebauer",
+          github: "",
           url: "http://negebauer.github.io/",
         },
         {
@@ -112,6 +113,7 @@ export class Collaborators extends Component {
         {
           name: "Tomas",
           github: "tegaete",
+          url: "",
         },
       ]
     };
@@ -126,7 +128,9 @@ export class Collaborators extends Component {
         <div className="Collaborators-content">
         {this.state.collaborators.map((collaborator) => (
           <div>
-            <a href={`http://github.com/${collaborator.github}`}>{collaborator.name}</a>
+            {collaborator.name}
+            {collaborator.url ? (<a href={collaborator.url}><Icon size="1x" name="globe" /></a>) : "" }
+            {collaborator.github ? (<a href={collaborator.github}><Icon size="1x" name="github" /></a>) : "" }
           </div>
         ))}
         </div>
