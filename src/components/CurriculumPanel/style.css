@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 10px;
+  padding-top: 10px;
 }
 
 /*.CurriculumPanel-content {
