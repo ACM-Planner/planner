@@ -1,26 +1,22 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-
-
-import {Tabs, Tab} from 'material-ui/Tabs';
-// From https://github.com/oliviertassinari/react-swipeable-views
 import SwipeableViews from 'react-swipeable-views';
-
-
-// import FloatingActionButton from 'material-ui/FloatingActionButton';
-// import ContentAdd from 'material-ui/svg-icons/content/add';
+import { ActionButtons } from './ActionButtons'
+import { Tabs, Tab } from 'material-ui/Tabs';
 
 
 import './style.css';
 
 export class Schedulers extends Component {
+
   render() {
     return (
       <div className={classnames('Schedulers', this.props.className)} style={this.props.style}>
-        <code>src/components/Schedulers/index.js</code>
+        <ScheduleTabs />
+        <ActionButtons />
       </div>
-    );
+      );
   }
 }
 
@@ -37,21 +33,8 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(mapStateToProps, mapDispatchToProps)(Schedulers);
 
 
-// SwipeableViews
 
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-  slide: {
-    padding: 10,
-  },
-};
-
-export default class TabsExampleSwipeable extends React.Component {
+class ScheduleTabs extends Component {
 
   constructor(props) {
     super(props);
@@ -67,98 +50,63 @@ export default class TabsExampleSwipeable extends React.Component {
     });
   };
 
-addTab(e){
-      const tabs = this.state.tabs
-      tabs.push('newtab')
-      this.setState({tabs: tabs})
-}
+  addTab(e) {
+    const tabs = [...this.state.tabs]
+    tabs.push('NewTab')
+    this.setState({
+      tabs: tabs
+    })
+  }
 
-eraseTab(e){
-      //erase a tab
-}
-//edit a tab name?
-
+  eraseTab(e) {
+    //TODO: erase a tab
+  }
 
   render() {
+
+    const tabs = this.state.tabs.map((tab, i) => (<Tab key={i} label={tab} value={i} />))
+    const grids = this.state.tabs.map((tab, i) => (<ScheduleGrid key={i}/>))
+
     return (
       <div>
-       <button type="button" onClick={this.addTab.bind(this)}> ADD </button>
+       <button type="button" onClick={this.addTab.bind(this)}> ADD (FIX)</button>
+       <Tabs onChange={this.handleChange} value={this.state.slideIndex} >
+         { tabs }
+       </Tabs>
 
-        <Tabs
-          onChange={this.handleChange}
-          value={this.state.slideIndex}
-        >
-            {this.state.tabs.map((tab, i) => (
-                  <Tab label={tab} value={i} />
-            ))}
-        </Tabs>
-        <SwipeableViews
-          index={this.state.slideIndex}
-          onChangeIndex={this.handleChange}
-        >
-
-        {this.state.tabs.map((tab, i) => (
-            <div >
-                        <table>
-                               <tr>
-                                       <td>block</td>
-                                       <td>block</td>
-                                       <td>block</td>
-                                       <td>block</td>
-                                       <td>block</td>
-                                </tr>
-                               <tr>
-                                       <td>block</td>
-                                       <td> block</td>
-                                       <td>block</td>
-                                       <td>block</td>
-                                       <td>block</td>
-                               </tr>
-                               <tr>
-                                       <td> block</td>
-                                       <td>block</td>
-                                       <td>block</td>
-                                       <td>block</td>
-                                       <td>block</td>
-                               </tr>
-
-                               <tr>
-                                      <td> block</td>
-                                      <td>block</td>
-                                      <td>block</td>
-                                      <td>block</td>
-                                      <td>block</td>
-                               </tr>
-                               <tr>
-                                      <td> block</td>
-                                      <td>block</td>
-                                      <td>block</td>
-                                      <td>block</td>
-                                      <td>block</td>
-                               </tr>
-                      </table>
-
-            </div>
-
-        ))}
-
+       <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange}>
+         { grids }
         </SwipeableViews>
       </div>
-    );
+      );
   }
 }
 
 
+class ScheduleGrid extends Component {
 
-//
-//
-// const FloatingActionButtonExampleSimple = () => (
-//   <div>
-//
-//     <FloatingActionButton mini={true} disabled={true}>
-//       <ContentAdd />
-//     </FloatingActionButton>
-//   </div>
-// );
-//
-// export default FloatingActionButtonExampleSimple;
+  render() {
+    const rows = Array(8).fill(Array(6).fill(null).map(() => (<ScheduleNode />)))
+
+    return (
+    <table>
+      <thead>
+
+      </thead>
+      <tbody>
+        { rows.map(x => (<tr>{ x }</tr>)) }
+      </tbody>
+    </table>)
+  }
+}
+
+
+class ScheduleNode extends Component {
+
+  render(){
+    return (
+    <td>
+      Block
+    </td>)
+  }
+}
