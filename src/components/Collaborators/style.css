@@ -1,7 +1,42 @@
+body {
+    background-color: #00838f;
+}
+
 .Collaborators {
   display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  /*background-color: blue;*/
 }
 
 .Collaborators-title {
+    color: #fafafa;
+    text-align: center;
+    font-size: 26px;
+    margin: 20px;
+}
 
+.Collaborators-content {
+  background-color: white;
+  display: flex;
+  flex: 1;
+  background: white;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.Collaborator-name {
+    font-size: 20px;
+    color: black;
+}
+
+.Collaborator-url {
+    color: #BDBDBD;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.Collaborator-url:hover {
+    color: #7B1FA2;
 }
