@@ -3,13 +3,24 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 10px;
+  padding-top: 10px;
 }
 
-.CurriculumPanel-content {
+/*.CurriculumPanel-content {
   margin: 10px;
-}
+}*/
 
 .CurriculumPanel-text {
   text-align: center;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.CurriculumPanel-button {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.CurriculumPanel-button:hover {
+    cursor: pointer;
 }

@@ -1,7 +1,24 @@
 .Footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: wheat;
+  display: block;
+  /*justify-content: center;*/
+  /*align-items: center;;*/
+  background-color: #00838f;
   min-height: 50px;
+  padding: 20px 0 10px 0;
+}
+
+.Footer-box {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    color: #fafafa;
+}
+
+.Footer-link {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+.Footer-link:hover {
+    color: #7B1FA2;
 }
