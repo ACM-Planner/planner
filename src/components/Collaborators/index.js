@@ -130,7 +130,7 @@ export class Collaborators extends Component {
           <div>
             {collaborator.name}
             {collaborator.url ? (<a href={collaborator.url}><Icon size="1x" name="globe" /></a>) : "" }
-            {collaborator.github ? (<a href={collaborator.github}><Icon size="1x" name="github" /></a>) : "" }
+            {collaborator.github ? (<a href={`http://github.com/${collaborator.github}`}><Icon size="1x" name="github" /></a>) : "" }
           </div>
         ))}
         </div>
