@@ -4,5 +4,15 @@
   justify-content: center;
   align-items: center;
   height: 70px;
-  background-color: green;
+  background-color: #fff;
+}
+.Header-Dropdowns {
+  width: 90%;
+  position: relative;
+}
+
+.Header-Dropdown {
+  position: absolute;
+  width: 21%;
+  margin: 0 1%;
 }
