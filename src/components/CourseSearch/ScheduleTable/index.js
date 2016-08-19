@@ -16,17 +16,17 @@ class ScheduleTableRow extends Component {
 
   getItemStyle(position) {
     if (this.state.selected[position]) {
-      return 'ScheduleFilterItemSelected';
+      return classnames('ScheduleFilterItemSelected', this.props.className);
     } else {
-      return 'ScheduleFilterItem';
+      return classnames('ScheduleFilterItem', this.props.className);
     }
   }
 
-  handleCellClick(position) {
-    console.log(position);
+  handleCellClick(day) {
     var selected = this.state.selected.slice();
-    selected[position] = !selected[position];
+    selected[day] = !selected[day];
     this.setState({ selected: selected} );
+    this.props.onClick(day);
   }
 
   render() {
@@ -65,14 +65,14 @@ export default class ScheduleTable extends Component {
     return (
       <table className={classnames('SchedulerGrid', this.props.className)} style={this.props.style}>
         <ScheduleTableTopRow props={this.props}/>
-        <ScheduleTableRow onClick={(i) => this.props.onClick(0,i)} module={1} props={this.props}/>
-        <ScheduleTableRow onClick={(i) => this.props.onClick(1,i)} module={2} props={this.props}/>
-        <ScheduleTableRow onClick={(i) => this.props.onClick(2,i)} module={3} props={this.props}/>
-        <ScheduleTableRow onClick={(i) => this.props.onClick(3,i)} module={4} props={this.props}/>
-        <ScheduleTableRow onClick={(i) => this.props.onClick(4,i)} module={5} props={this.props}/>
-        <ScheduleTableRow onClick={(i) => this.props.onClick(5,i)} module={6} props={this.props}/>
-        <ScheduleTableRow onClick={(i) => this.props.onClick(6,i)} module={7} props={this.props}/>
-        <ScheduleTableRow onClick={(i) => this.props.onClick(7,i)} module={8} props={this.props}/>
+        <ScheduleTableRow onClick={(day) => this.props.onClick(day, 1)} module={1} props={this.props}/>
+        <ScheduleTableRow onClick={(day) => this.props.onClick(day, 2)} module={2} props={this.props}/>
+        <ScheduleTableRow onClick={(day) => this.props.onClick(day, 3)} module={3} props={this.props}/>
+        <ScheduleTableRow onClick={(day) => this.props.onClick(day, 4)} module={4} props={this.props}/>
+        <ScheduleTableRow onClick={(day) => this.props.onClick(day, 5)} module={5} props={this.props}/>
+        <ScheduleTableRow onClick={(day) => this.props.onClick(day, 6)} module={6} props={this.props}/>
+        <ScheduleTableRow onClick={(day) => this.props.onClick(day, 7)} module={7} props={this.props}/>
+        <ScheduleTableRow onClick={(day) => this.props.onClick(day, 8)} module={8} props={this.props}/>
       </table>
     )
   }

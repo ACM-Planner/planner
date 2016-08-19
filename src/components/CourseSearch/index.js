@@ -70,7 +70,19 @@ export class CourseSearch extends Component {
 
   handleCategoryChange = (event, index, value) => this.setState({ category: value });
 
-  handleCellClick = (i, j) => this.setState({ selectedModules: this.state.selectedModules.concat([i, j]) });
+  handleCellClick = (day, module) => {
+    for (var i = 0; i < this.state.selectedModules.length; i++) {
+      var selectedModules = this.state.selectedModules.slice();
+      if (selectedModules[i].day === day && selectedModules[i].module === module) {
+        // Borrar si ya esta
+        selectedModules.splice(i, 1);
+        this.setState({ selectedModules: selectedModules });
+        return;
+      }
+    }
+    // Agregar si no esta
+    this.setState({ selectedModules: this.state.selectedModules.concat({day, module }) });
+  }
 
   render() {
     return (
@@ -88,18 +100,16 @@ export class CourseSearch extends Component {
           fullWidth={true}
         />
 
-        <div>
-          <SelectField autoWidth={false} value={this.state.campus} onChange={this.handleCampusChange}>
+        <div className={'FilterParamsContainer'}>
+          <SelectField className={'FilterParamsDropdown'} autoWidth={false} value={this.state.campus} onChange={this.handleCampusChange}>
             {campuses}
           </SelectField>
-        </div>
-        <div>
-          <SelectField autoWidth={false} value={this.state.school} onChange={this.handleSchoolChange}>
+
+          <SelectField className={'FilterParamsDropdown'} autoWidth={false} value={this.state.school} onChange={this.handleSchoolChange}>
             {schools}
           </SelectField>
-        </div>
-        <div>
-          <SelectField autoWidth={false} value={this.state.category} onChange={this.handleCategoryChange}>
+
+          <SelectField className={'FilterParamsDropdown'} autoWidth={false} value={this.state.category} onChange={this.handleCategoryChange}>
             {categories}
           </SelectField>
         </div>
