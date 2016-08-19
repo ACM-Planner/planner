@@ -7,7 +7,7 @@ import './style.css';
 const ScheduleTableRow = (props) => {
   return (
     <tr>
-      <td> 1 </td>
+      <td> 2 </td>
       <td className={classnames('ScheduleFilterItem', props.className)} style={props.style}/>
       <td className={classnames('ScheduleFilterItem', props.className)} style={props.style}/>
       <td className={classnames('ScheduleFilterItem', props.className)} style={props.style}/>

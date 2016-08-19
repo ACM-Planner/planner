@@ -10,6 +10,34 @@ import ScheduleTable from './ScheduleTable'
 
 import './style.css';
 
+const semesters = [
+  <MenuItem value={20162} primaryText='2016-2' />,
+  <MenuItem value={20161} primaryText='2016-1' />,
+  <MenuItem value={20152} primaryText='2015-2' />,
+  <MenuItem value={20151} primaryText='2015-1' />
+];
+
+const schools = [
+  <MenuItem value={1} primaryText='Ingenieria' />,
+  <MenuItem value={2} primaryText='Enfermeria' />,
+  <MenuItem value={3} primaryText='Ingenieria Comercial' />,
+  <MenuItem value={4} primaryText='Psicologia' />,
+  <MenuItem value={5} primaryText='Construccion Civil' />
+];
+
+const campuses = [
+  <MenuItem value={1} primaryText='San Joaquin' />,
+  <MenuItem value={2} primaryText='Campus Oriente' />,
+  <MenuItem value={3} primaryText='Casa Central' />,
+  <MenuItem value={4} primaryText='Villarrica' />,
+  <MenuItem value={5} primaryText='Lo Contador' />
+];
+
+const categories = [
+  <MenuItem value={1} primaryText='OFG' />,
+  <MenuItem value={2} primaryText='OPR' />
+];
+
 export class CourseSearch extends Component {
 
   constructor(props) {
@@ -19,12 +47,14 @@ export class CourseSearch extends Component {
       autocompleteSource: [],
       semester: 20162,
       campus: 1,
+      school: 1,
+      category: 1,
     };
   }
 
-  handleUpdateInput = (value) => {
+  handleUpdateSearchInput = (value) => {
     this.setState({
-      dataSource: [
+      autocompleteSource: [
         value,
         value + value,
       ],
@@ -35,41 +65,51 @@ export class CourseSearch extends Component {
 
   handleCampusChange = (event, index, value) => this.setState({ campus: value });
 
+  handleSchoolChange = (event, index, value) => this.setState({ school: value });
+
+  handleCategoryChange = (event, index, value) => this.setState({ category: value });
+
   render() {
     return (
 
       <div className={classnames('CourseSearch', this.props.className)} style={this.props.style}>
 
         <DropDownMenu value={this.state.semester} onChange={this.handleSemesterChange}>
-          <MenuItem value={20162} primaryText="2016-2" />
-          <MenuItem value={20161} primaryText="2016-1" />
-          <MenuItem value={20152} primaryText="2015-2" />
-          <MenuItem value={20151} primaryText="2015-1" />
+          {semesters}
         </DropDownMenu>
 
         <AutoComplete
-          hintText="Ingresa tu curso"
+          hintText='Ingresa tu curso'
           dataSource={this.state.autocompleteSource}
-          onUpdateInput={this.handleUpdateInput}
+          onUpdateInput={this.handleUpdateSearchInput}
           fullWidth={true}
-          />
+        />
 
         <div>
-          <SelectField value={this.state.campus} onChange={this.handleCampusChange}>
-            <MenuItem value={1} primaryText="San Joaquin" />
-            <MenuItem value={2} primaryText="Campus Oriente" />
-            <MenuItem value={3} primaryText="Casa Central" />
-            <MenuItem value={5} primaryText="Lo Contador" />
-            <MenuItem value={4} primaryText="Villarrica" />
+          <SelectField autoWidth={false} value={this.state.campus} onChange={this.handleCampusChange}>
+            {campuses}
+          </SelectField>
+        </div>
+        <div>
+          <SelectField autoWidth={false} value={this.state.school} onChange={this.handleSchoolChange}>
+            {schools}
+          </SelectField>
+        </div>
+        <div>
+          <SelectField autoWidth={false} value={this.state.category} onChange={this.handleCategoryChange}>
+            {categories}
           </SelectField>
         </div>
 
+        <hr/>
+        <hr/>
+        <hr/>
 
         <div className={classnames('ScheduleFilterContainer', this.props.className)} style={this.props.style}>
           <ScheduleTable />
         </div>
 
-        <RaisedButton label="Buscar" fullWidth={true} />
+        <RaisedButton label='Buscar' fullWidth={true} />
 
       </div>
 
