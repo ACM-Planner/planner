@@ -12,18 +12,18 @@ export class Footer extends Component {
         {/* <code>src/components/Footer/index.js</code> */}
         <div className="Footer-box">
           <div>
-          Hecho con mucho amor carino y dedicacion por
+            DCC working day and night for UC
           </div>
         </div>
         <div className="Footer-box">
         <div>
-          Link a colaboradores
+          <a className="Footer-link" href='/posts/'><Icon size="1x" name="heart" />  Colaboradores</a>
         </div>
         <div>
-          Link al github <Icon size="1x" name="github" />
+          <a className="Footer-link" href='/posts/'><Icon size="1x" name="github" />  Proyecto</a>
         </div>
         <div>
-          Link al capitulo
+          <a className="Footer-link" href='/posts/'>Capítulo estudiantil ACM</a>
         </div>
         </div>
       </footer>
