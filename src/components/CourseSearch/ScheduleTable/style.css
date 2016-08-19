@@ -13,6 +13,13 @@
   border: 1px solid gray;
 }
 
+.ScheduleFilterItemSelected {
+  background-color: lightblue;
+  width: 100px;
+  height: 30px;
+  border: 1px solid gray;
+}
+
 .SchedulerGrid {
   border-collapse:collapse;
 }

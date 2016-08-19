@@ -14,7 +14,7 @@ const semesters = [
   <MenuItem value={20162} primaryText='2016-2' />,
   <MenuItem value={20161} primaryText='2016-1' />,
   <MenuItem value={20152} primaryText='2015-2' />,
-  <MenuItem value={20151} primaryText='2015-1' />
+  <MenuItem value={20151} primaryText='2015-1' />,
 ];
 
 const schools = [
@@ -35,7 +35,7 @@ const campuses = [
 
 const categories = [
   <MenuItem value={1} primaryText='OFG' />,
-  <MenuItem value={2} primaryText='OPR' />
+  <MenuItem value={2} primaryText='OPR' />,
 ];
 
 export class CourseSearch extends Component {
@@ -49,6 +49,7 @@ export class CourseSearch extends Component {
       campus: 1,
       school: 1,
       category: 1,
+      selectedModules: [],
     };
   }
 
@@ -68,6 +69,8 @@ export class CourseSearch extends Component {
   handleSchoolChange = (event, index, value) => this.setState({ school: value });
 
   handleCategoryChange = (event, index, value) => this.setState({ category: value });
+
+  handleCellClick = (i, j) => this.setState({ selectedModules: this.state.selectedModules.concat([i, j]) });
 
   render() {
     return (
@@ -101,12 +104,8 @@ export class CourseSearch extends Component {
           </SelectField>
         </div>
 
-        <hr/>
-        <hr/>
-        <hr/>
-
         <div className={classnames('ScheduleFilterContainer', this.props.className)} style={this.props.style}>
-          <ScheduleTable />
+          <ScheduleTable onClick={this.handleCellClick} />
         </div>
 
         <RaisedButton label='Buscar' fullWidth={true} />
