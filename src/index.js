@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux'
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Other imports
 import uuid from 'node-uuid';
@@ -18,6 +19,10 @@ import identity from 'lodash/identity';
 import Routes from './routes';
 import reducers from './reducers';
 import './index.css';
+
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 // Initial global state
 const INITIAL_STATE = {
