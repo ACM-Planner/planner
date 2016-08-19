@@ -6,6 +6,9 @@ import { ActionButtons } from './ActionButtons'
 import { Tabs, Tab } from 'material-ui/Tabs';
 
 
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+
 import './style.css';
 
 export class Schedulers extends Component {
@@ -13,8 +16,10 @@ export class Schedulers extends Component {
   render() {
     return (
       <div className={classnames('Schedulers', this.props.className)} style={this.props.style}>
+
         <ScheduleTabs />
         <ActionButtons />
+
       </div>
       );
   }
@@ -63,13 +68,20 @@ class ScheduleTabs extends Component {
   }
 
   render() {
-
     const tabs = this.state.tabs.map((tab, i) => (<Tab key={i} label={tab} value={i} />))
     const grids = this.state.tabs.map((tab, i) => (<ScheduleGrid key={i}/>))
 
     return (
+          <div>
+          <div className={classnames('SchedulersAddButton', this.props.className)} style={this.props.style}>
+            <div onClick={this.addTab.bind(this)}>
+              <FloatingActionButton mini={true}>
+                <ContentAdd />
+              </FloatingActionButton>
+            </div>
+    </div>
+
       <div>
-       <button type="button" onClick={this.addTab.bind(this)}> ADD (FIX)</button>
        <Tabs onChange={this.handleChange} value={this.state.slideIndex} >
          { tabs }
        </Tabs>
@@ -77,6 +89,7 @@ class ScheduleTabs extends Component {
        <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange}>
          { grids }
         </SwipeableViews>
+        </div>
       </div>
       );
   }
@@ -86,7 +99,7 @@ class ScheduleTabs extends Component {
 class ScheduleGrid extends Component {
 
   render() {
-    const rows = Array(8).fill(Array(6).fill(null).map(() => (<ScheduleNode />)))
+    const rows = Array(8).fill(Array(6).fill(null).map((x,i) => (<ScheduleNode  schedule={[]}/>)))
 
     return (
     <table>
@@ -94,7 +107,7 @@ class ScheduleGrid extends Component {
 
       </thead>
       <tbody>
-        { rows.map(x => (<tr>{ x }</tr>)) }
+        { rows.map(x => (<tr>{ x  }</tr>)) }
       </tbody>
     </table>)
   }
@@ -102,11 +115,18 @@ class ScheduleGrid extends Component {
 
 
 class ScheduleNode extends Component {
+  // render(){
+  //     return this.props.schedule.map(({ day, module }, i)  => {
+  //             if (this.props.day === day && this.props.module === module) {
+                  //   return (<td key={i}>Block</td>);
+  //             } else {
+  //                   return null;
+  //             }
+  //       }).filter(item => item !== null);
+// }
 
-  render(){
-    return (
-    <td>
-      Block
-    </td>)
-  }
+
+  render(){return (<td>Block</td>);}
+
+
 }

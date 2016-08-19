@@ -4,3 +4,9 @@
   align-items: center;
   background-color: orange;
 }
+
+.SchedulersAddButton{
+      position: absolute;
+      right: 40px;
+      display: inline-block;
+}
