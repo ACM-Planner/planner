@@ -55,9 +55,5 @@
       "mocha": true,
       "node": true
     }
-  },
-  "collaborators": [
-      "negebauer",
-      "gantunesr"
-  ]
+  }
 }
