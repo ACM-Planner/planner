@@ -17,13 +17,13 @@ export class Footer extends Component {
         </div>
         <div className="Footer-box">
         <div>
-          <a className="Footer-link" href='/posts/'><Icon size="1x" name="heart" />  Colaboradores</a>
+          <a className="Footer-link" href='/collaborators'><Icon size="1x" name="heart" />  Colaboradores</a>
         </div>
         <div>
-          <a className="Footer-link" href='/posts/'><Icon size="1x" name="github" />  Proyecto</a>
+          <a className="Footer-link" href='https://github.com/ACM-Planner'><Icon size="1x" name="github" />  Proyecto</a>
         </div>
         <div>
-          <a className="Footer-link" href='/posts/'>Capítulo estudiantil ACM</a>
+          <a className="Footer-link" href='/'>Capítulo estudiantil ACM</a>
         </div>
         </div>
       </footer>
